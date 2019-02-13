@@ -40,7 +40,7 @@ The task is episodic, and in order to solve the environment, your agents must ge
 
 The environment is considered solved, when the average (over 100 episodes) of those **scores** is at least +0.5.
 
-![Trained Agent][tennis.png]
+![](https://github.com/salimoha/DRL_DistributedRL/blob/master/tennis.png)
 
 ##### &nbsp;
 
