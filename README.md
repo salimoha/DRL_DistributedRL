@@ -1,5 +1,6 @@
 # Train Two RL Agents to Play Tennis
 ##### &nbsp;
+The result of the best model is shown below.
 
 ![](https://github.com/salimoha/DRL_DistributedRL/blob/master/best_model.gif)
 
