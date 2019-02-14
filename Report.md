@@ -1,3 +1,68 @@
+# Train Two RL Agents to Play Tennis
+##### &nbsp;
+
+## Background
+For artificial intelligence (AI) to reach its full potential, AI systems need to interact safely and efficiently with humans, as well as other agents. There are already environments where this happens on a daily basis, such as the stock market. And there are future applications that will rely on productive agent-human interactions, such as self-driving cars and other autonomous vehicles.
+
+One step along this path is to train AI agents to interact with other agents in both cooperative and competitive settings. Reinforcement learning (RL) is a subfield of AI that's shown promise. However, thus far, much of RL's success has been in single agent domains, where building models that predict the behavior of other actors is unnecessary. As a result, traditional RL approaches (such as Q-Learning) are not well-suited for the complexity that accompanies environments where multiple agents are continuously interacting and evolving their policies.
+
+[//]: # (> Unfortunately, traditional reinforcement learning approaches such as Q-Learning or policy gradient
+are poorly suited to multi-agent environments. One issue is that each agent’s policy is changing
+as training progresses, and the environment becomes non-stationary from the perspective of any
+individual agent in a way that is not explainable by changes in the agent’s own policy. This presents
+learning stability challenges and prevents the straightforward use of past experience replay, which is crucial for stabilizing deep Q-learning. Policy gradient methods, on the other hand, usually exhibit very high variance when coordination of multiple agents is required. Alternatively, one can use model-based policy optimization which can learn optimal policies via back-propagation, but this requires
+a differentiable model of the world dynamics and assumptions about the interactions between
+agents. Applying these methods to competitive environments is also challenging from an optimization
+perspective, as evidenced by the notorious instability of adversarial training methods [11].)
+
+[//]: # (https://papers.nips.cc/paper/7217-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments.pdf)
+
+##### &nbsp;
+
+## Goal
+The goal of this project is to train two RL agents to play tennis. As in real tennis, the goal of each player is to keep the ball in play. And, when you have two equally matched opponents, you tend to see fairly long exchanges where the players hit the ball back and forth over the net.
+
+##### &nbsp;
+
+## The Environment
+We'll work with an environment that is similar, but not identical to the [Tennis](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#tennis) environment on the Unity ML-Agents GitHub page.
+
+In this environment, two agents control rackets to bounce a ball over a net. If an agent hits the ball over the net, it receives a reward of +0.1.  If an agent lets a ball hit the ground or hits the ball out of bounds, it receives a reward of -0.01.  Thus, the goal of each agent is to keep the ball in play.
+
+The observation space consists of 8 variables corresponding to the position and velocity of the ball and racket. Each agent receives its own, local observation.  Two continuous actions are available, corresponding to movement toward (or away from) the net, and jumping.
+
+The task is episodic, and in order to solve the environment, your agents must get an average score of +0.5 (over 100 consecutive episodes, after taking the maximum over both agents). Specifically,
+
+- After each episode, we add up the rewards that each agent received (without discounting), to get a score for each agent. This yields 2 (potentially different) scores. We then take the maximum of these 2 scores.
+- This yields a single **score** for each episode.
+
+The environment is considered solved, when the average (over 100 episodes) of those **scores** is at least +0.5.
+
+![Trained Agent][image1]
+
+##### &nbsp;
+
+
+
+
+
+
+
+
+## References
+
+-  <https://papers.nips.cc/paper/7217-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments.pdf>
+-  <https://arxiv.org/pdf/1509.02971.pdf>
+- <https://papers.nips.cc/paper/7217-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments.pdf>
+- <https://papers.nips.cc/paper/7217-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments.pdf>
+- <https://papers.nips.cc/paper/7217-multi-agent-actor-critic-for-mixed-cooperative-competitive-environments.pdf>
+- <https://arxiv.org/pdf/1509.02971.pdf>
+- <https://machinelearningmastery.com/exploding-gradients-in-neural-networks/>
+
+
+
+
+
 # Continuous Control
 
 A continuous state space is used to simulate two agents playing tennis.
