@@ -58,7 +58,7 @@ The original DDPG algorithm from which I extended to create the MADDPG version, 
 
 The following hyperparameters are used:
 
-'''
+```
 BUFFER_SIZE = int(1e6)  # replay buffer size
 BATCH_SIZE = 128        # minibatch size
 LR_ACTOR = 1e-3         # learning rate of the actor
@@ -73,7 +73,7 @@ OU_THETA = 0.12         # Ornstein-Uhlenbeck noise parameter, speed of mean reve
 EPS_START = 5.5         # initial value for epsilon in noise decay process in Agent.act()
 EPS_EP_END = 250        # episode to end the noise decay process
 EPS_FINAL = 0           # final value for epsilon after decay
-'''
+```
 
 
 
