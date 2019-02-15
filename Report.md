@@ -56,6 +56,26 @@ To get started, there are a few high-level architecture decisions we need to mak
 The original DDPG algorithm from which I extended to create the MADDPG version, is outlined in [this paper](https://arxiv.org/pdf/1509.02971.pdf), _Continuous Control with Deep Reinforcement Learning_, by researchers at Google Deepmind. In this paper, the authors present "a model-free, off-policy actor-critic algorithm using deep function approximators that can learn policies in high-dimensional, continuous action spaces." They highlight that DDPG can be viewed as an extension of Deep Q-learning to continuous tasks.
 
 
+The following hyperparameters are used:
+
+'''
+BUFFER_SIZE = int(1e6)  # replay buffer size
+BATCH_SIZE = 128        # minibatch size
+LR_ACTOR = 1e-3         # learning rate of the actor
+LR_CRITIC = 1e-3        # learning rate of the critic
+WEIGHT_DECAY = 0        # L2 weight decay
+LEARN_EVERY = 1         # learning timestep interval
+LEARN_NUM = 1           # number of learning passes
+GAMMA = 0.99            # discount factor
+TAU = 7e-2              # for soft update of target parameters
+OU_SIGMA = 0.2          # Ornstein-Uhlenbeck noise parameter, volatility
+OU_THETA = 0.12         # Ornstein-Uhlenbeck noise parameter, speed of mean reversion
+EPS_START = 5.5         # initial value for epsilon in noise decay process in Agent.act()
+EPS_EP_END = 250        # episode to end the noise decay process
+EPS_FINAL = 0           # final value for epsilon after decay
+'''
+
+
 
 ## Future Improvements
 - **Address stability issues to produce more consistent results** &mdash; My "best" results are only reproducible if you run the model numerous times. If you just run it once (or even 3-5 times) the model might not converge. I ran the model at least 30 while searching for a good set of hyperparameters, so perhaps implementing a more systemic approach such as grid search would help. Otherwise, more research is needed to find a more stable algorithm, or to make changes to the current DDPG algorithm.
