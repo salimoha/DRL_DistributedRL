@@ -32,7 +32,38 @@ The environment is considered solved, when the average (over 100 episodes) of th
 ##### &nbsp;
 
 
+## Plot of rewards
+![Reward Plot](https://github.com/salimoha/DRL_DistributedRL/blob/master/result.png?raw=true)
 
+
+##### &nbsp;
+## Methodology
+We have three main steps to build an agent to work in the above environment as below:
+
+1. Perform random action policy to consider a baseline approach.
+2. Choose an appropriate distrubted RL algorithm such as Multi-Agent Deep Deterministic Policy Gradient (MADDPG).
+3. Run different experiments until the performance threshold is reached.
+
+### 1. Establish Baseline
+Before building agents that learns, I started by testing ones that select actions (uniformly) at random at each time step.
+
+Running the random agents a few times resulted in scores from 0 to 0.02. Obviously, if these agents need to achieve an average score of 0.5 over 100 consecutive episodes, then choosing actions at random won't work. However, when you watch the agents acting randomly, it becomes clear that these types of sporadic actions can be useful early in the training process. That is, they can help the agents explore the action space to find some signal of good vs. bad actions. This insight will come into play later when we implement the Ornstein-Uhlenbeck process and epsilon noise decay.
+
+### 2. Implement Learning Algorithm
+To get started, there are a few high-level architecture decisions we need to make. First, we need to determine which types of algorithms are most suitable for the Tennis environment.
+
+#### Multi-Agent Deep Deterministic Policy Gradient (MADDPG)
+The original DDPG algorithm from which I extended to create the MADDPG version, is outlined in [this paper](https://arxiv.org/pdf/1509.02971.pdf), _Continuous Control with Deep Reinforcement Learning_, by researchers at Google Deepmind. In this paper, the authors present "a model-free, off-policy actor-critic algorithm using deep function approximators that can learn policies in high-dimensional, continuous action spaces." They highlight that DDPG can be viewed as an extension of Deep Q-learning to continuous tasks.
+
+
+
+## Future Improvements
+- **Address stability issues to produce more consistent results** &mdash; My "best" results are only reproducible if you run the model numerous times. If you just run it once (or even 3-5 times) the model might not converge. I ran the model at least 30 while searching for a good set of hyperparameters, so perhaps implementing a more systemic approach such as grid search would help. Otherwise, more research is needed to find a more stable algorithm, or to make changes to the current DDPG algorithm.
+- **Add *prioritized* experience replay** &mdash; Rather than selecting experience tuples randomly, prioritized replay selects experiences based on a priority value that is correlated with the magnitude of error. This can improve learning by increasing the probability that rare or important experience vectors are sampled.
+- **Batch Normalization** &mdash; I did not use batch normalization on this project, but I probably should have. I've used batch normalization many times in the past when building convolutional neural networks (CNN), in order to squash pixel values. But, it didn't occur to me that it would be to this project. 
+
+
+##### &nbsp;
 
 ### Getting Started
 
